@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Privacy Policy — Wellora</title>
+  <meta name="description" content="Privacy Policy for Wellora - Learn how Wellora protects your walking and health fitness data with on-device privacy and Google Drive AppData backup.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg: #070908;
+      --surface-card: rgba(255, 255, 255, 0.035);
+      --surface-glass: rgba(20, 27, 22, 0.7);
+      --border: rgba(255, 255, 255, 0.09);
+      --border-accent: rgba(197, 243, 106, 0.3);
+      --primary: #C5F36A;
+      --text: #F3F4F6;
+      --text-muted: #9CA3AF;
+      --text-dim: #6B7280;
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      background-color: var(--bg);
+      color: var(--text);
+      font-family: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, sans-serif;
+      line-height: 1.7;
+    }
+
+    .container {
+      max-width: 860px;
+      margin: 0 auto;
+      padding: 30px 24px 80px;
+    }
+
+    nav {
+      margin-bottom: 40px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      text-decoration: none;
+      color: #fff;
+      font-weight: 800;
+      font-size: 19px;
+    }
+    .brand img { width: 30px; height: 30px; border-radius: 8px; }
+    .back-link {
+      color: var(--primary);
+      text-decoration: none;
+      font-size: 14px;
+      font-weight: 600;
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+    }
+    .back-link:hover { text-decoration: underline; }
+
+    .doc-card {
+      background: var(--surface-card);
+      border: 1px solid var(--border);
+      border-radius: 24px;
+      padding: 44px 36px;
+      box-shadow: 0 20px 50px rgba(0,0,0,0.5);
+    }
+
+    h1 {
+      font-size: 32px;
+      font-weight: 800;
+      letter-spacing: -0.8px;
+      margin-bottom: 6px;
+      color: #FFFFFF;
+    }
+    .meta {
+      color: var(--text-dim);
+      font-size: 14px;
+      margin-bottom: 30px;
+      padding-bottom: 20px;
+      border-bottom: 1px solid var(--border);
+    }
+
+    h2 {
+      font-size: 20px;
+      font-weight: 700;
+      color: #FFFFFF;
+      margin-top: 36px;
+      margin-bottom: 12px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+    h2::before {
+      content: "";
+      width: 4px;
+      height: 18px;
+      background: var(--primary);
+      border-radius: 2px;
+      display: inline-block;
+    }
+
+    p, li {
+      color: var(--text-muted);
+      font-size: 15px;
+      margin-bottom: 14px;
+    }
+    ul { padding-left: 22px; margin-bottom: 20px; }
+    li { margin-bottom: 8px; }
+
+    /* Callout Box for Google Drive Disclosure */
+    .callout-box {
+      background: rgba(197, 243, 106, 0.05);
+      border: 1px solid var(--border-accent);
+      border-radius: 16px;
+      padding: 24px;
+      margin: 24px 0;
+    }
+    .callout-box h3 {
+      font-size: 16.5px;
+      color: var(--primary);
+      font-weight: 700;
+      margin-bottom: 10px;
+    }
+    .callout-box p, .callout-box li {
+      color: #D1D5DB;
+      font-size: 14.5px;
+    }
+    code {
+      background: rgba(255,255,255,0.08);
+      padding: 2px 6px;
+      border-radius: 4px;
+      color: var(--primary);
+      font-family: monospace;
+      font-size: 13.5px;
+    }
+
+    a { color: var(--primary); text-decoration: none; }
+    a:hover { text-decoration: underline; }
+
+    footer {
+      margin-top: 50px;
+      text-align: center;
+      font-size: 13.5px;
+      color: var(--text-dim);
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <nav>
+      <a href="index.html" class="brand">
+        <img src="images/logo.png" alt="Wellora Logo">
+        <span>Wellora</span>
+      </a>
+      <a href="index.html" class="back-link">&larr; Back to Home</a>
+    </nav>
+
+    <div class="doc-card">
+      <h1>Privacy Policy</h1>
+      <div class="meta">Last Updated: November 20, 2026 &bull; Effective Immediately</div>
+
+      <p>Thank you for choosing <strong>Wellora</strong> ("we", "our", or "us"). This Privacy Policy explains our practices regarding the collection, use, and disclosure of information when you use the Wellora mobile application on Android.</p>
+      <p>We believe your personal health and fitness journey belongs to you alone. Wellora is designed from the ground up as a <strong>privacy-first, on-device application</strong>.</p>
+
+      <h2>1. Information We Collect</h2>
+      <p>Wellora does not require an account, username, or phone number to function. We collect only the physical activity data necessary to track and display your daily walking metrics:</p>
+      <ul>
+        <li><strong>Step Count & Motion Sensor Data:</strong> We read the hardware step counter / step detector sensor present on your device to count steps, estimate distance walked (in km), and calculate estimated calories burned.</li>
+        <li><strong>Android Permissions:</strong> Wellora requests the <code>ACTIVITY_RECOGNITION</code> permission strictly to detect walking movement while the app is in use or running in the background.</li>
+        <li><strong>Local Storage:</strong> All daily records, goals, and sharing preferences are stored locally on your device in a private SQLite database.</li>
+      </ul>
+
+      <h2>2. Google Drive Cloud Backup (Google API Disclosure)</h2>
+      <div class="callout-box">
+        <h3>Google Drive AppData Integration & Sensitive Scope Disclosure</h3>
+        <p>Wellora offers an optional feature that allows users to create and restore encrypted backups of their activity history using their Google account. When you connect Google Drive, Wellora requests access exclusively to the following OAuth scope:</p>
+        <p><code>https://www.googleapis.com/auth/drive.appdata</code></p>
+        <ul>
+          <li><strong>Restricted AppData Folder Only:</strong> Wellora reads and writes backup files strictly within its own hidden, isolated Application Data folder in your Google Drive.</li>
+          <li><strong>Zero Access to Personal Files:</strong> Wellora has <strong>no permission or ability</strong> to read, view, edit, or delete your personal Google Drive files, photos, documents, or folders.</li>
+          <li><strong>No Third-Party Transmission:</strong> Your backup files are transferred directly between your device and Google's official cloud storage. We do not maintain intermediate servers or transmit your data to third parties.</li>
+        </ul>
+      </div>
+
+      <h2>3. Google API Services User Data Policy Compliance</h2>
+      <p>Wellora's use and transfer to any other app of information received from Google APIs adheres to the <a href="https://developers.google.com/terms/api-services-user-data-policy" target="_blank" rel="noopener">Google API Services User Data Policy</a>, including the Limited Use requirements.</p>
+
+      <h2>4. Data Sharing & Third-Party SDKs</h2>
+      <p>We do not sell, rent, or monetize your personal health and fitness information. We integrate with verified industry-standard SDKs:</p>
+      <ul>
+        <li><strong>Google Play In-App Billing:</strong> Processes optional subscriptions for Wellora Premium securely through Google Play. We do not store or process your payment details.</li>
+        <li><strong>Google Mobile Ads (AdMob):</strong> Used to support free features for non-subscribers. AdMob serves non-personalized, family-safe advertisements in compliance with Google Play Developer Policies.</li>
+      </ul>
+
+      <h2>5. Data Retention and Deletion</h2>
+      <p>Because your walking data is stored locally on your phone, deleting or uninstalling the app permanently deletes all local health records. If you have stored backups in Google Drive, you can delete them at any time directly through the Google Drive backup management screen inside Wellora or via your Google Account Security settings.</p>
+
+      <h2>6. Security</h2>
+      <p>We implement standard encryption and isolated sandbox storage on Android. All network transfers for cloud backup are conducted over encrypted HTTPS connections directly to Google Cloud infrastructure.</p>
+
+      <h2>7. Children's Privacy</h2>
+      <p>Wellora is intended for general audiences and does not knowingly collect personal identifiable information from children under 13.</p>
+
+      <h2>8. Contact Developer</h2>
+      <p>If you have any questions or requests regarding this Privacy Policy, please contact our developer support team:</p>
+      <p>
+        <strong>Email:</strong> <a href="mailto:appdev.varun@gmail.com">appdev.varun@gmail.com</a><br>
+        <strong>Application:</strong> Wellora (Android)<br>
+        <strong>Developer Contact:</strong> Varun (Wellora Team)
+      </p>
+    </div>
+
+    <footer>
+      <p>&copy; 2026 Wellora. All rights reserved. &bull; <a href="terms.html">Terms of Service</a> &bull; <a href="index.html">Home</a></p>
+    </footer>
+  </div>
+</body>
+</html>

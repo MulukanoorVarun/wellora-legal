@@ -3,22 +3,28 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Wellora — Walk with Purpose. Celebrate Every Step.</title>
-  <meta name="description" content="Wellora is a modern, privacy-first walking tracker, health wellness, and artistic activity sharing app for Android.">
+  <title>Wellora — Holistic Wellness, Movement &amp; Cycle Tracker</title>
+  <meta name="description" content="Wellora is a modern, privacy-first wellness companion for Android. Track steps, water hydration, menstrual cycles, body metrics &amp; BMI, and blood pressure with zero battery drain.">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
   <style>
     :root {
-      --bg: #070908;
-      --surface: #0e1310;
+      --bg: #060807;
+      --surface: #0c100d;
       --surface-card: rgba(255, 255, 255, 0.035);
-      --surface-glass: rgba(18, 24, 20, 0.75);
-      --border: rgba(255, 255, 255, 0.09);
+      --surface-card-hover: rgba(255, 255, 255, 0.06);
+      --surface-glass: rgba(12, 16, 13, 0.82);
+      --border: rgba(255, 255, 255, 0.08);
       --border-accent: rgba(197, 243, 106, 0.35);
       --primary: #C5F36A;
       --primary-glow: rgba(197, 243, 106, 0.28);
       --emerald: #10B981;
+      --water-blue: #38BDF8;
+      --water-glow: rgba(56, 189, 248, 0.25);
+      --cycle-pink: #F43F5E;
+      --cycle-glow: rgba(244, 63, 94, 0.22);
+      --bp-amber: #F59E0B;
       --gold: #FFD166;
       --text: #F3F4F6;
       --text-muted: #9CA3AF;
@@ -35,44 +41,53 @@
       overflow-x: hidden;
     }
 
-    /* Ambient Glow Backgrounds */
+    /* Ambient Lighting Backgrounds */
     .glow-circle-1 {
       position: absolute;
-      top: -140px;
+      top: -160px;
       left: 50%;
       transform: translateX(-50%);
-      width: 780px;
-      height: 520px;
-      background: radial-gradient(circle, rgba(197, 243, 106, 0.14) 0%, rgba(16, 185, 129, 0.06) 40%, transparent 70%);
+      width: 820px;
+      height: 560px;
+      background: radial-gradient(circle, rgba(197, 243, 106, 0.13) 0%, rgba(16, 185, 129, 0.05) 45%, transparent 70%);
       pointer-events: none;
       z-index: 0;
     }
-
     .glow-circle-2 {
       position: absolute;
-      top: 1300px;
+      top: 1400px;
       right: -150px;
       width: 600px;
       height: 600px;
-      background: radial-gradient(circle, rgba(16, 185, 129, 0.09) 0%, transparent 65%);
+      background: radial-gradient(circle, rgba(56, 189, 248, 0.08) 0%, transparent 65%);
+      pointer-events: none;
+      z-index: 0;
+    }
+    .glow-circle-3 {
+      position: absolute;
+      top: 2600px;
+      left: -180px;
+      width: 650px;
+      height: 650px;
+      background: radial-gradient(circle, rgba(244, 63, 94, 0.07) 0%, transparent 65%);
       pointer-events: none;
       z-index: 0;
     }
 
     .container {
-      max-width: 1140px;
+      max-width: 1160px;
       margin: 0 auto;
       padding: 0 24px;
       position: relative;
       z-index: 1;
     }
 
-    /* Navbar */
+    /* Sticky Glass Navigation */
     nav {
       position: sticky;
       top: 16px;
       z-index: 100;
-      margin-bottom: 40px;
+      margin-bottom: 36px;
     }
     .nav-bar {
       display: flex;
@@ -80,11 +95,11 @@
       justify-content: space-between;
       padding: 12px 24px;
       background: var(--surface-glass);
-      backdrop-filter: blur(18px);
-      -webkit-backdrop-filter: blur(18px);
+      backdrop-filter: blur(20px);
+      -webkit-backdrop-filter: blur(20px);
       border: 1px solid var(--border);
       border-radius: 9999px;
-      box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+      box-shadow: 0 12px 35px rgba(0,0,0,0.55);
     }
     .brand {
       display: flex;
@@ -105,20 +120,20 @@
     }
     .nav-links {
       display: flex;
-      gap: 28px;
+      gap: 24px;
       align-items: center;
     }
     .nav-links a {
       color: var(--text-muted);
       text-decoration: none;
-      font-size: 14.5px;
+      font-size: 14px;
       font-weight: 500;
       transition: color 0.2s;
     }
     .nav-links a:hover { color: var(--primary); }
     .btn-nav {
       background: var(--primary);
-      color: #0E150F;
+      color: #0B110C;
       padding: 9px 20px;
       border-radius: 9999px;
       font-weight: 700;
@@ -134,7 +149,7 @@
     /* Hero Section */
     .hero {
       text-align: center;
-      padding: 40px 0 70px;
+      padding: 40px 0 65px;
     }
     .badge-pill {
       display: inline-flex;
@@ -165,9 +180,9 @@
     }
 
     .hero h1 {
-      font-size: clamp(38px, 6.2vw, 68px);
+      font-size: clamp(36px, 5.8vw, 64px);
       font-weight: 800;
-      line-height: 1.1;
+      line-height: 1.12;
       letter-spacing: -2px;
       margin-bottom: 20px;
       background: linear-gradient(180deg, #FFFFFF 25%, #A8B2A6 100%);
@@ -175,9 +190,9 @@
       -webkit-text-fill-color: transparent;
     }
     .hero p {
-      font-size: clamp(16px, 2.2vw, 20px);
+      font-size: clamp(16px, 2vw, 19.5px);
       color: var(--text-muted);
-      max-width: 680px;
+      max-width: 740px;
       margin: 0 auto 36px;
       font-weight: 400;
       line-height: 1.6;
@@ -230,7 +245,7 @@
     .mockup-container {
       position: relative;
       max-width: 330px;
-      margin: 0 auto;
+      margin: 0 auto 40px;
     }
     .mockup-card {
       border-radius: 40px;
@@ -253,32 +268,39 @@
     /* Floating Badges */
     .float-chip {
       position: absolute;
-      background: rgba(18, 24, 20, 0.85);
+      background: rgba(14, 18, 15, 0.9);
       backdrop-filter: blur(14px);
       -webkit-backdrop-filter: blur(14px);
-      border: 1px solid rgba(255, 255, 255, 0.15);
-      padding: 10px 18px;
+      border: 1px solid rgba(255, 255, 255, 0.14);
+      padding: 9px 16px;
       border-radius: 9999px;
       box-shadow: 0 12px 30px rgba(0,0,0,0.6);
       display: flex;
       align-items: center;
       gap: 10px;
-      font-size: 13.5px;
+      font-size: 13px;
       font-weight: 700;
       color: #fff;
       z-index: 10;
       animation: float 4s ease-in-out infinite;
+      white-space: nowrap;
     }
-    .float-left {
-      top: 22%;
-      left: -65px;
+    .float-chip-left {
+      top: 18%;
+      left: -90px;
       border-color: rgba(197, 243, 106, 0.4);
     }
-    .float-right {
-      bottom: 24%;
-      right: -65px;
-      animation-delay: -2s;
-      border-color: rgba(255, 209, 102, 0.4);
+    .float-chip-right {
+      top: 38%;
+      right: -85px;
+      animation-delay: -1.5s;
+      border-color: rgba(56, 189, 248, 0.45);
+    }
+    .float-chip-bottom {
+      bottom: 12%;
+      left: -80px;
+      animation-delay: -3s;
+      border-color: rgba(244, 63, 94, 0.4);
     }
     @keyframes float {
       0%, 100% { transform: translateY(0); }
@@ -288,13 +310,13 @@
     /* Metric Counter Ribbon */
     .metrics-ribbon {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
       gap: 16px;
-      margin: 80px 0;
+      margin: 60px 0 90px;
       background: var(--surface-card);
       border: 1px solid var(--border);
       border-radius: 24px;
-      padding: 30px 20px;
+      padding: 26px 20px;
     }
     .metric-item {
       text-align: center;
@@ -308,76 +330,439 @@
       letter-spacing: -0.5px;
     }
     .metric-label {
-      font-size: 13.5px;
+      font-size: 13px;
       color: var(--text-muted);
       font-weight: 500;
     }
 
-    /* Features Grid */
+    /* Section Headers */
     .section-title {
       text-align: center;
-      margin: 90px 0 45px;
+      margin: 80px 0 45px;
+    }
+    .section-title .section-tag {
+      display: inline-block;
+      text-transform: uppercase;
+      font-size: 12px;
+      font-weight: 800;
+      letter-spacing: 1.5px;
+      color: var(--primary);
+      margin-bottom: 10px;
     }
     .section-title h2 {
-      font-size: clamp(28px, 4.5vw, 42px);
+      font-size: clamp(28px, 4.2vw, 42px);
       font-weight: 800;
       letter-spacing: -1.2px;
       margin-bottom: 12px;
     }
     .section-title p {
       color: var(--text-muted);
-      font-size: 17px;
-      max-width: 600px;
+      font-size: 16.5px;
+      max-width: 660px;
       margin: 0 auto;
     }
 
-    .features-grid {
+    /* Flows Master Showcase Grid */
+    .flows-grid {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-      gap: 20px;
-      margin-bottom: 70px;
+      grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+      gap: 24px;
+      margin-bottom: 80px;
     }
-    .feature-card {
+    .flow-card {
       background: var(--surface-card);
       border: 1px solid var(--border);
-      border-radius: 22px;
-      padding: 32px 24px;
-      transition: all 0.25s ease;
-    }
-    .feature-card:hover {
-      transform: translateY(-4px);
-      border-color: var(--border-accent);
-      background: rgba(255, 255, 255, 0.05);
-      box-shadow: 0 12px 30px rgba(0,0,0,0.4);
-    }
-    .feature-icon {
-      width: 50px;
-      height: 50px;
-      border-radius: 16px;
-      background: rgba(197, 243, 106, 0.12);
-      color: var(--primary);
+      border-radius: 24px;
+      padding: 32px 28px;
       display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      position: relative;
+      overflow: hidden;
+      transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+    .flow-card:hover {
+      transform: translateY(-5px);
+      border-color: var(--border-accent);
+      background: var(--surface-card-hover);
+      box-shadow: 0 20px 45px rgba(0,0,0,0.5);
+    }
+    .flow-badge {
+      display: inline-flex;
       align-items: center;
-      justify-content: center;
-      font-size: 24px;
-      margin-bottom: 22px;
-      border: 1px solid rgba(197, 243, 106, 0.2);
-    }
-    .feature-card h3 {
-      font-size: 19px;
+      gap: 6px;
+      font-size: 11.5px;
       font-weight: 700;
-      margin-bottom: 10px;
-      color: var(--text);
+      text-transform: uppercase;
+      letter-spacing: 0.8px;
+      padding: 4px 12px;
+      border-radius: 999px;
+      margin-bottom: 18px;
+      width: fit-content;
     }
-    .feature-card p {
+    .badge-volt { background: rgba(197, 243, 106, 0.14); color: var(--primary); border: 1px solid rgba(197, 243, 106, 0.25); }
+    .badge-blue { background: rgba(56, 189, 248, 0.14); color: var(--water-blue); border: 1px solid rgba(56, 189, 248, 0.25); }
+    .badge-rose { background: rgba(244, 63, 94, 0.14); color: var(--cycle-pink); border: 1px solid rgba(244, 63, 94, 0.25); }
+    .badge-amber { background: rgba(245, 158, 11, 0.14); color: var(--bp-amber); border: 1px solid rgba(245, 158, 11, 0.25); }
+    .badge-gold { background: rgba(255, 209, 102, 0.14); color: var(--gold); border: 1px solid rgba(255, 209, 102, 0.25); }
+
+    .flow-card h3 {
+      font-size: 22px;
+      font-weight: 800;
+      letter-spacing: -0.5px;
+      margin-bottom: 10px;
+      color: #fff;
+    }
+    .flow-card p {
       color: var(--text-muted);
       font-size: 14.5px;
       line-height: 1.6;
+      margin-bottom: 22px;
+    }
+
+    /* Interactive Visual UI Components Inside Cards */
+    .interactive-preview {
+      background: rgba(0, 0, 0, 0.45);
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      border-radius: 18px;
+      padding: 20px;
+      margin-top: auto;
+    }
+
+    /* Pedometer Mock UI */
+    .steps-mock {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+    .circle-stat {
+      position: relative;
+      width: 78px;
+      height: 78px;
+      border-radius: 50%;
+      background: conic-gradient(var(--primary) 0% 82%, rgba(255,255,255,0.08) 82% 100%);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .circle-stat-inner {
+      width: 62px;
+      height: 62px;
+      border-radius: 50%;
+      background: #0D120E;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+    }
+    .circle-stat-val {
+      font-size: 14px;
+      font-weight: 800;
+      color: #fff;
+      line-height: 1;
+    }
+    .circle-stat-sub {
+      font-size: 9px;
+      color: var(--primary);
+      font-weight: 700;
+    }
+    .steps-details {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 10px;
+      flex: 1;
+      margin-left: 20px;
+    }
+    .detail-item {
+      background: rgba(255,255,255,0.03);
+      padding: 8px 10px;
+      border-radius: 10px;
+      border: 1px solid rgba(255,255,255,0.05);
+    }
+    .detail-val {
+      font-size: 13.5px;
+      font-weight: 700;
+      color: #fff;
+    }
+    .detail-sub {
+      font-size: 10.5px;
+      color: var(--text-dim);
+    }
+
+    /* Water Wave Mock UI */
+    .water-mock {
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+    }
+    .water-status-row {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    .water-val-lg {
+      font-size: 24px;
+      font-weight: 800;
+      color: var(--water-blue);
+      letter-spacing: -0.5px;
+    }
+    .water-target-txt {
+      font-size: 12px;
+      color: var(--text-muted);
+    }
+    .water-bar-bg {
+      width: 100%;
+      height: 12px;
+      background: rgba(255,255,255,0.08);
+      border-radius: 999px;
+      overflow: hidden;
+      position: relative;
+    }
+    .water-bar-fill {
+      width: 78%;
+      height: 100%;
+      background: linear-gradient(90deg, #0284C7 0%, var(--water-blue) 100%);
+      border-radius: 999px;
+      box-shadow: 0 0 12px rgba(56, 189, 248, 0.4);
+    }
+    .water-quick-row {
+      display: flex;
+      gap: 8px;
+    }
+    .water-quick-pill {
+      font-size: 11px;
+      font-weight: 700;
+      padding: 5px 10px;
+      border-radius: 8px;
+      background: rgba(56, 189, 248, 0.12);
+      color: var(--water-blue);
+      border: 1px solid rgba(56, 189, 248, 0.25);
+    }
+
+    /* Menstrual Cycle Mock UI */
+    .cycle-mock {
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+    }
+    .cycle-status-row {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    .cycle-phase-title {
+      font-size: 16px;
+      font-weight: 800;
+      color: #fff;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+    .cycle-days-pill {
+      font-size: 11.5px;
+      font-weight: 700;
+      padding: 4px 10px;
+      border-radius: 999px;
+      background: rgba(244, 63, 94, 0.16);
+      color: var(--cycle-pink);
+      border: 1px solid rgba(244, 63, 94, 0.3);
+    }
+    .cycle-timeline {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 6px;
+      margin: 4px 0;
+    }
+    .cycle-stage {
+      text-align: center;
+      padding: 6px 2px;
+      border-radius: 8px;
+      background: rgba(255,255,255,0.03);
+      border: 1px solid rgba(255,255,255,0.06);
+    }
+    .stage-active {
+      background: rgba(244, 63, 94, 0.14);
+      border-color: rgba(244, 63, 94, 0.4);
+    }
+    .stage-name {
+      font-size: 10px;
+      font-weight: 700;
+      color: var(--text-muted);
+      display: block;
+    }
+    .stage-active .stage-name {
+      color: var(--cycle-pink);
+    }
+    .stage-status {
+      font-size: 9px;
+      color: var(--text-dim);
+    }
+    .cycle-symptoms-chips {
+      display: flex;
+      gap: 6px;
+      flex-wrap: wrap;
+    }
+    .symptom-chip {
+      font-size: 10.5px;
+      padding: 3px 8px;
+      border-radius: 6px;
+      background: rgba(255,255,255,0.04);
+      border: 1px solid rgba(255,255,255,0.08);
+      color: var(--text-muted);
+    }
+
+    /* Body Metrics / BMI Mock UI */
+    .bmi-mock {
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+    }
+    .bmi-row-top {
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+    }
+    .bmi-score {
+      font-size: 24px;
+      font-weight: 800;
+      color: #fff;
+    }
+    .bmi-badge-normal {
+      font-size: 11px;
+      font-weight: 700;
+      padding: 4px 10px;
+      border-radius: 999px;
+      background: rgba(16, 185, 129, 0.16);
+      color: var(--emerald);
+      border: 1px solid rgba(16, 185, 129, 0.3);
+    }
+    .bmi-bar-spectrum {
+      height: 8px;
+      border-radius: 999px;
+      background: linear-gradient(90deg, #38BDF8 0%, #10B981 35%, #F59E0B 70%, #EF4444 100%);
+      position: relative;
+      margin: 6px 0;
+    }
+    .bmi-marker {
+      position: absolute;
+      top: -3px;
+      left: 38%;
+      width: 14px;
+      height: 14px;
+      border-radius: 50%;
+      background: #fff;
+      border: 3px solid #10B981;
+      transform: translateX(-50%);
+      box-shadow: 0 0 8px rgba(16, 185, 129, 0.6);
+    }
+    .weight-delta-row {
+      display: flex;
+      justify-content: space-between;
+      font-size: 11.5px;
+      color: var(--text-muted);
+    }
+    .weight-delta-highlight {
+      color: var(--primary);
+      font-weight: 700;
+    }
+
+    /* Blood Pressure Mock UI */
+    .bp-mock {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+    .bp-vals {
+      display: flex;
+      align-items: baseline;
+      gap: 4px;
+    }
+    .bp-systolic {
+      font-size: 26px;
+      font-weight: 800;
+      color: #fff;
+    }
+    .bp-slash {
+      font-size: 20px;
+      color: var(--text-dim);
+    }
+    .bp-diastolic {
+      font-size: 22px;
+      font-weight: 800;
+      color: var(--text-muted);
+    }
+    .bp-unit {
+      font-size: 11px;
+      color: var(--text-dim);
+      margin-left: 4px;
+    }
+    .bp-status-box {
+      text-align: right;
+    }
+    .bp-tag {
+      font-size: 11px;
+      font-weight: 700;
+      padding: 4px 10px;
+      border-radius: 999px;
+      background: rgba(16, 185, 129, 0.16);
+      color: var(--emerald);
+      border: 1px solid rgba(16, 185, 129, 0.3);
+      display: inline-block;
+      margin-bottom: 4px;
+    }
+    .bp-pulse {
+      font-size: 11.5px;
+      color: var(--text-dim);
+    }
+
+    /* App Widgets Showcase Row */
+    .widgets-section {
+      margin: 80px 0;
+      background: linear-gradient(180deg, rgba(255,255,255,0.03) 0%, rgba(255,255,255,0.01) 100%);
+      border: 1px solid var(--border);
+      border-radius: 28px;
+      padding: 44px 32px;
+    }
+    .widgets-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 24px;
+      margin-top: 32px;
+    }
+    .widget-box {
+      background: rgba(16, 21, 18, 0.85);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      border-radius: 20px;
+      padding: 22px;
+      box-shadow: 0 10px 25px rgba(0,0,0,0.4);
+    }
+    .widget-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 14px;
+    }
+    .widget-title {
+      font-size: 13px;
+      font-weight: 700;
+      color: var(--text-muted);
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+    .widget-platform {
+      font-size: 10px;
+      font-weight: 800;
+      text-transform: uppercase;
+      padding: 2px 7px;
+      border-radius: 4px;
+      background: rgba(255,255,255,0.08);
+      color: var(--text-dim);
     }
 
     /* Template Showcase Section */
     .templates-section {
-      padding: 50px 0 70px;
+      padding: 40px 0 70px;
     }
     .templates-grid {
       display: grid;
@@ -426,26 +811,97 @@
       letter-spacing: 0.5px;
     }
 
-    /* Privacy Banner */
+    /* Quotes Feature Ribbon */
+    .quotes-card {
+      margin: 60px 0;
+      background: linear-gradient(135deg, rgba(255, 209, 102, 0.08) 0%, rgba(197, 243, 106, 0.04) 100%);
+      border: 1px solid rgba(255, 209, 102, 0.25);
+      border-radius: 26px;
+      padding: 36px 32px;
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+    }
+    .quotes-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 12px;
+    }
+    .quotes-title h3 {
+      font-size: 22px;
+      font-weight: 800;
+      color: #fff;
+    }
+    .quotes-title p {
+      color: var(--text-muted);
+      font-size: 14px;
+    }
+    .quotes-tags {
+      display: flex;
+      gap: 8px;
+      flex-wrap: wrap;
+    }
+    .quote-tag-item {
+      font-size: 11px;
+      font-weight: 700;
+      padding: 4px 10px;
+      border-radius: 999px;
+      background: rgba(255, 209, 102, 0.12);
+      color: var(--gold);
+      border: 1px solid rgba(255, 209, 102, 0.25);
+    }
+    .quote-quote-box {
+      background: rgba(0,0,0,0.4);
+      padding: 20px 24px;
+      border-radius: 16px;
+      border-left: 3px solid var(--gold);
+      font-style: italic;
+      color: #F9FAFB;
+      font-size: 15.5px;
+    }
+
+    /* Privacy & Google Drive Banner */
     .privacy-banner {
       margin: 60px 0 90px;
       background: linear-gradient(135deg, rgba(16, 185, 129, 0.09) 0%, rgba(197, 243, 106, 0.05) 100%);
       border: 1px solid rgba(16, 185, 129, 0.28);
       border-radius: 26px;
-      padding: 44px 32px;
+      padding: 48px 36px;
       text-align: center;
     }
     .privacy-banner h3 {
-      font-size: 27px;
+      font-size: 28px;
       font-weight: 800;
       margin-bottom: 12px;
       color: #fff;
     }
     .privacy-banner p {
       color: var(--text-muted);
-      max-width: 680px;
-      margin: 0 auto 26px;
+      max-width: 720px;
+      margin: 0 auto 28px;
       font-size: 15.5px;
+      line-height: 1.65;
+    }
+    .privacy-badges-row {
+      display: flex;
+      justify-content: center;
+      gap: 14px;
+      flex-wrap: wrap;
+      margin-bottom: 28px;
+    }
+    .privacy-check-chip {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      font-size: 12.5px;
+      font-weight: 600;
+      color: var(--emerald);
+      background: rgba(16, 185, 129, 0.1);
+      border: 1px solid rgba(16, 185, 129, 0.25);
+      padding: 6px 14px;
+      border-radius: 999px;
     }
 
     /* Footer */
@@ -467,6 +923,7 @@
     .footer-links {
       display: flex;
       gap: 24px;
+      flex-wrap: wrap;
     }
     .footer-links a {
       color: var(--text-muted);
@@ -478,20 +935,23 @@
       text-align: center;
       border-top: 1px solid rgba(255, 255, 255, 0.05);
       padding-top: 24px;
+      font-size: 13px;
     }
 
-    @media (max-width: 768px) {
+    @media (max-width: 840px) {
       .nav-links { display: none; }
-      .hero { padding: 25px 0 50px; }
+      .hero { padding: 25px 0 45px; }
       .float-chip { display: none; }
       .metrics-ribbon { grid-template-columns: 1fr 1fr; }
-      .features-grid { grid-template-columns: 1fr; }
+      .flows-grid { grid-template-columns: 1fr; }
+      .templates-grid { grid-template-columns: 1fr; }
     }
   </style>
 </head>
 <body>
   <div class="glow-circle-1"></div>
   <div class="glow-circle-2"></div>
+  <div class="glow-circle-3"></div>
 
   <div class="container">
     <!-- Navbar -->
@@ -502,22 +962,25 @@
           <span>Wellora</span>
         </a>
         <div class="nav-links">
-          <a href="#features">Features</a>
-          <a href="#templates">Sharing Templates</a>
-          <a href="privacy.html">Privacy Policy</a>
+          <a href="#flows">All Flows</a>
+          <a href="#water">Hydration</a>
+          <a href="#cycle">Cycle Care</a>
+          <a href="#vitals">Body &amp; Vitals</a>
+          <a href="#templates">Story Cards</a>
+          <a href="privacy.html">Privacy</a>
           <a href="terms.html">Terms</a>
         </div>
         <a href="#download" class="btn-nav">Get App</a>
       </div>
     </nav>
 
-    <!-- Hero -->
-    <section class="hero">
+    <!-- Hero Section -->
+    <section class="hero" id="overview">
       <div class="badge-pill">
-        <div class="pulse-dot"></div> Daily Wellness & Mindful Activity
+        <div class="pulse-dot"></div> All-in-One Daily Movement &amp; Holistic Health Companion
       </div>
-      <h1>Every Step Counts.<br>Celebrate Your Journey.</h1>
-      <p>A modern, battery-friendly walking companion with gorgeous social activity-sharing templates, daily motivational quotes, and 100% private Google Drive backup.</p>
+      <h1>Walk with Purpose.<br>Nurture Every Rhythm of Your Body.</h1>
+      <p>Wellora seamlessly integrates smart pedometer tracking, water hydration reminders, menstrual cycle insights, body composition with BMI, and clinical blood pressure logs — 100% on-device and private.</p>
 
       <div class="cta-group" id="download">
         <a href="https://play.google.com/store" target="_blank" class="btn-primary">
@@ -526,19 +989,22 @@
           </svg>
           Download for Android
         </a>
-        <a href="#templates" class="btn-secondary">Explore Templates &rarr;</a>
+        <a href="#flows" class="btn-secondary">Explore All Features &rarr;</a>
       </div>
 
-      <!-- App Mockup Showcase with Floating Live Pills -->
+      <!-- App Mockup Showcase with Floating Stat Badges -->
       <div class="mockup-container">
-        <div class="float-chip float-left">
-          <span>⚡</span> 8,540 steps today
+        <div class="float-chip float-chip-left">
+          <span>⚡</span> 8,540 / 10,000 steps today
         </div>
-        <div class="float-chip float-right">
-          <span>🔥</span> 320 kcal &bull; 5.8 km
+        <div class="float-chip float-chip-right">
+          <span>💧</span> 2,250 ml &bull; 90% Hydrated
+        </div>
+        <div class="float-chip float-chip-bottom">
+          <span>🌸</span> Day 9 &bull; Follicular Phase
         </div>
         <div class="mockup-card">
-          <img src="images/preview_morning.png" alt="Wellora App Sharing Template" class="mockup-screen">
+          <img src="images/preview_morning.png" alt="Wellora App Showcase" class="mockup-screen">
         </div>
       </div>
     </section>
@@ -546,12 +1012,16 @@
     <!-- Metric Counter Ribbon -->
     <div class="metrics-ribbon">
       <div class="metric-item">
+        <div class="metric-value">5-in-1</div>
+        <div class="metric-label">Holistic Health Modules</div>
+      </div>
+      <div class="metric-item">
         <div class="metric-value">100%</div>
-        <div class="metric-label">Privacy-First (On-Device Storage)</div>
+        <div class="metric-label">Offline &amp; On-Device Privacy</div>
       </div>
       <div class="metric-item">
         <div class="metric-value">12+</div>
-        <div class="metric-label">1080×1920 Sharing Templates</div>
+        <div class="metric-label">1080×1920 Story Cards</div>
       </div>
       <div class="metric-item">
         <div class="metric-value">15</div>
@@ -563,45 +1033,260 @@
       </div>
     </div>
 
-    <!-- Features -->
-    <section id="features">
+    <!-- Complete App Flows Section -->
+    <section id="flows">
       <div class="section-title">
-        <h2>Built for Wellness, Designed for Beauty</h2>
-        <p>Everything you need to stay motivated, healthy, and consistent in your daily walking routine.</p>
+        <span class="section-tag">Complete Health Ecosystem</span>
+        <h2>Explore Every Flow in Wellora</h2>
+        <p>A unified wellness sanctuary engineered to cultivate daily habits, support body wellness, and celebrate every milestone.</p>
       </div>
 
-      <div class="features-grid">
-        <div class="feature-card">
-          <div class="feature-icon">🚶</div>
-          <h3>Smart Step Tracking</h3>
-          <p>Zero battery drain. Accurate on-device step counting, active walking time, distance in km, and estimated calories burned updated in real-time.</p>
+      <div class="flows-grid">
+        <!-- Flow 1: Step Tracker -->
+        <div class="flow-card">
+          <div>
+            <div class="flow-badge badge-volt">🚶 Step Tracker &amp; Movement</div>
+            <h3>Smart Pedometer</h3>
+            <p>Monitors daily steps, active walking duration, real distance in kilometers, and active calories burned using native hardware step sensors with zero background battery drain.</p>
+          </div>
+          <div class="interactive-preview">
+            <div class="steps-mock">
+              <div class="circle-stat">
+                <div class="circle-stat-inner">
+                  <span class="circle-stat-val">8.5k</span>
+                  <span class="circle-stat-sub">85%</span>
+                </div>
+              </div>
+              <div class="steps-details">
+                <div class="detail-item">
+                  <div class="detail-val">320 kcal</div>
+                  <div class="detail-sub">Burned</div>
+                </div>
+                <div class="detail-item">
+                  <div class="detail-val">5.8 km</div>
+                  <div class="detail-sub">Distance</div>
+                </div>
+                <div class="detail-item">
+                  <div class="detail-val">58 min</div>
+                  <div class="detail-sub">Active Time</div>
+                </div>
+                <div class="detail-item">
+                  <div class="detail-val">7 Days</div>
+                  <div class="detail-sub">Streak</div>
+                </div>
+              </div>
+            </div>
+          </div>
         </div>
 
-        <div class="feature-card">
-          <div class="feature-icon">🎨</div>
-          <h3>Artistic Sharing Templates</h3>
-          <p>Turn your achievements into editorial social media stories. 12 high-resolution 1080×1920 designs inspired by nature, mountains, and sunset.</p>
+        <!-- Flow 2: Water Hydration -->
+        <div class="flow-card" id="water">
+          <div>
+            <div class="flow-badge badge-blue">💧 Water Hydration</div>
+            <h3>Fluid Wave &amp; Smart Drink Reminders</h3>
+            <p>Stay refreshed throughout the day. Log water intake with one tap (+150ml, +250ml, +500ml), track animated liquid levels against your daily goal, and receive intelligent interval hydration alerts with bedtime quiet hours.</p>
+          </div>
+          <div class="interactive-preview">
+            <div class="water-mock">
+              <div class="water-status-row">
+                <span class="water-val-lg">2,250 ml</span>
+                <span class="water-target-txt">Goal: 2,500 ml (90%)</span>
+              </div>
+              <div class="water-bar-bg">
+                <div class="water-bar-fill"></div>
+              </div>
+              <div class="water-quick-row">
+                <span class="water-quick-pill">+150 ml Cup</span>
+                <span class="water-quick-pill">+250 ml Glass</span>
+                <span class="water-quick-pill">+500 ml Bottle</span>
+              </div>
+            </div>
+          </div>
         </div>
 
-        <div class="feature-card">
-          <div class="feature-icon">💬</div>
-          <h3>Motivational Quotes</h3>
-          <p>Personalize every shared walk with 15 curated inspirational wellness quotes across 5 categories, or write your own custom 80-character thoughts.</p>
+        <!-- Flow 3: Menstrual Cycle Tracker -->
+        <div class="flow-card" id="cycle">
+          <div>
+            <div class="flow-badge badge-rose">🌸 Menstrual Cycle Tracker</div>
+            <h3>Cycle &amp; Ovulation Companion</h3>
+            <p>Designed with medical privacy at core. Accurately predict upcoming periods, estimated fertile windows, and ovulation days across 4 hormonal phases (Menstrual, Follicular, Ovulatory, Luteal) alongside mood and symptom logging.</p>
+          </div>
+          <div class="interactive-preview">
+            <div class="cycle-mock">
+              <div class="cycle-status-row">
+                <span class="cycle-phase-title">✨ Follicular Phase</span>
+                <span class="cycle-days-pill">Day 9 of 28</span>
+              </div>
+              <div class="cycle-timeline">
+                <div class="cycle-stage">
+                  <span class="stage-name">Period</span>
+                  <span class="stage-status">Days 1-5</span>
+                </div>
+                <div class="cycle-stage stage-active">
+                  <span class="stage-name">Follicular</span>
+                  <span class="stage-status">Current</span>
+                </div>
+                <div class="cycle-stage">
+                  <span class="stage-name">Fertile</span>
+                  <span class="stage-status">In 3 Days</span>
+                </div>
+                <div class="cycle-stage">
+                  <span class="stage-name">Luteal</span>
+                  <span class="stage-status">Days 16-28</span>
+                </div>
+              </div>
+              <div class="cycle-symptoms-chips">
+                <span class="symptom-chip">Energized</span>
+                <span class="symptom-chip">Calm Mood</span>
+                <span class="symptom-chip">Clear Skin</span>
+              </div>
+            </div>
+          </div>
         </div>
 
-        <div class="feature-card">
-          <div class="feature-icon">🔒</div>
-          <h3>Private Google Drive Sync</h3>
-          <p>Zero tracking, zero cloud leaks. Encrypted backups sync strictly to your own hidden Google Drive AppData folder upon your request.</p>
+        <!-- Flow 4: Body Metrics & BMI -->
+        <div class="flow-card" id="vitals">
+          <div>
+            <div class="flow-badge badge-volt">⚖️ Body Metrics &amp; BMI</div>
+            <h3>Weight &amp; Composition Suite</h3>
+            <p>Record your weight journey, track body fat percentage, and visualize your clinical BMI classification according to World Health Organization standards. Celebrate every pound shed towards your dream goal weight.</p>
+          </div>
+          <div class="interactive-preview">
+            <div class="bmi-mock">
+              <div class="bmi-row-top">
+                <div>
+                  <span class="bmi-score">21.8</span>
+                  <span style="font-size: 13px; color: var(--text-muted); margin-left: 6px;">BMI Index</span>
+                </div>
+                <span class="bmi-badge-normal">Normal Weight</span>
+              </div>
+              <div class="bmi-bar-spectrum">
+                <div class="bmi-marker"></div>
+              </div>
+              <div class="weight-delta-row">
+                <span>Start: 72.0 kg &bull; Current: <strong>68.5 kg</strong></span>
+                <span class="weight-delta-highlight">&minus;3.5 kg Lost 🎉</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Flow 5: Blood Pressure -->
+        <div class="flow-card">
+          <div>
+            <div class="flow-badge badge-amber">❤️ Blood Pressure &amp; Vitals</div>
+            <h3>Cardiovascular Health Logs</h3>
+            <p>Keep a private, doctor-friendly log of your Systolic and Diastolic pressure alongside Pulse (BPM). Instant classification into AHA clinical stages: Normal, Elevated, Stage 1, Stage 2, or Hypertensive Crisis.</p>
+          </div>
+          <div class="interactive-preview">
+            <div class="bp-mock">
+              <div>
+                <div class="bp-vals">
+                  <span class="bp-systolic">118</span>
+                  <span class="bp-slash">/</span>
+                  <span class="bp-diastolic">78</span>
+                  <span class="bp-unit">mmHg</span>
+                </div>
+                <span class="bp-pulse">Pulse: 68 BPM &bull; Left Arm</span>
+              </div>
+              <div class="bp-status-box">
+                <span class="bp-tag">Optimal / Normal</span>
+                <div style="font-size: 10.5px; color: var(--text-dim);">AHA 2017 Guidelines</div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Flow 6: Private Google Drive Sync -->
+        <div class="flow-card">
+          <div>
+            <div class="flow-badge badge-gold">🔒 Cloud Backup &amp; Recovery</div>
+            <h3>100% Private Drive AppData</h3>
+            <p>Seamlessly back up and restore your activity history, water logs, and body records. Synced strictly to your personal hidden Google Drive AppData container — Wellora has zero access to your personal files or drive contents.</p>
+          </div>
+          <div class="interactive-preview">
+            <div style="display: flex; align-items: center; justify-content: space-between;">
+              <div>
+                <div style="font-size: 14px; font-weight: 700; color: #fff; margin-bottom: 2px;">Last Backup Snapshot</div>
+                <div style="font-size: 11px; color: var(--emerald);">✓ Encrypted &amp; Synced</div>
+              </div>
+              <span style="font-size: 11px; font-weight: 700; background: rgba(197, 243, 106, 0.12); color: var(--primary); padding: 5px 12px; border-radius: 999px; border: 1px solid rgba(197, 243, 106, 0.25);">drive.appdata</span>
+            </div>
+          </div>
         </div>
       </div>
     </section>
 
+    <!-- Android Home Screen Widgets Section -->
+    <div class="widgets-section">
+      <div class="section-title" style="margin: 0 0 20px;">
+        <span class="section-tag">Glanceable Insights</span>
+        <h2>Android Home Screen Widgets</h2>
+        <p>Monitor your progress at a glance without ever opening the app. Lightweight, battery-efficient Android desktop widgets for immediate step and hydration tracking.</p>
+      </div>
+
+      <div class="widgets-grid">
+        <div class="widget-box">
+          <div class="widget-header">
+            <span class="widget-title">⚡ Step Progress Widget</span>
+            <span class="widget-platform">Android Widget</span>
+          </div>
+          <div style="display: flex; align-items: baseline; justify-content: space-between;">
+            <div>
+              <div style="font-size: 26px; font-weight: 800; color: var(--primary);">8,540</div>
+              <div style="font-size: 11px; color: var(--text-muted);">Target: 10,000 steps</div>
+            </div>
+            <div style="text-align: right;">
+              <div style="font-size: 13px; font-weight: 700; color: #fff;">5.8 km</div>
+              <div style="font-size: 11px; color: var(--text-dim);">320 kcal</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="widget-box">
+          <div class="widget-header">
+            <span class="widget-title">💧 Hydration Quick-Log</span>
+            <span class="widget-platform">Android Widget</span>
+          </div>
+          <div style="display: flex; align-items: baseline; justify-content: space-between;">
+            <div>
+              <div style="font-size: 26px; font-weight: 800; color: var(--water-blue);">2,250 ml</div>
+              <div style="font-size: 11px; color: var(--text-muted);">9 of 10 Glasses (90%)</div>
+            </div>
+            <div style="font-size: 11px; font-weight: 700; color: var(--water-blue); background: rgba(56, 189, 248, 0.15); padding: 4px 10px; border-radius: 6px;">
+              +250ml
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Motivational Quotes Banner -->
+    <div class="quotes-card">
+      <div class="quotes-header">
+        <div class="quotes-title">
+          <h3>Daily Inspiration &amp; 15 Curated Quotes</h3>
+          <p>Infuse every walk with mindfulness. Pick from 5 curated categories or compose your own custom 80-character thought.</p>
+        </div>
+        <div class="quotes-tags">
+          <span class="quote-tag-item">Daily Boost</span>
+          <span class="quote-tag-item">Focus &amp; Calm</span>
+          <span class="quote-tag-item">Resilience</span>
+          <span class="quote-tag-item">Gratitude</span>
+          <span class="quote-tag-item">New Beginning</span>
+        </div>
+      </div>
+      <div class="quote-quote-box">
+        &ldquo;Every step forward is a silent victory for your mind and body. Celebrate the journey.&rdquo;
+      </div>
+    </div>
+
     <!-- Templates Section -->
     <section id="templates" class="templates-section">
       <div class="section-title">
-        <h2>Share Your Achievements in Style</h2>
-        <p>Dynamic 1080 × 1920 templates ready for WhatsApp Status, Instagram Stories, and social sharing.</p>
+        <span class="section-tag">Social Story Sharing</span>
+        <h2>12+ High-Resolution Story Cards</h2>
+        <p>Transform your daily wellness metrics into breathtaking 1080×1920 editorial cards ready for WhatsApp Status and Instagram Stories.</p>
       </div>
 
       <div class="templates-grid">
@@ -632,10 +1317,19 @@
     </section>
 
     <!-- Privacy First Banner -->
-    <div class="privacy-banner">
-      <h3>Your Health Data Stays Yours</h3>
-      <p>Wellora does not sell your data, require an account, or track your identity. Your walking records belong to you, securely stored on your device and backed up only to your private Google Drive upon request.</p>
-      <a href="privacy.html" class="btn-secondary">Read Full Privacy Policy &rarr;</a>
+    <div class="privacy-banner" id="privacy">
+      <div class="privacy-badges-row">
+        <span class="privacy-check-chip">✓ Zero Data Broker Tracking</span>
+        <span class="privacy-check-chip">✓ No Forced User Account</span>
+        <span class="privacy-check-chip">✓ On-Device SQLite Encryption</span>
+        <span class="privacy-check-chip">✓ Google Drive AppData Isolation</span>
+      </div>
+      <h3>Your Health Data Belongs to You Alone</h3>
+      <p>Wellora does not sell, broker, or transmit your sensitive health metrics, cycle logs, or vital signs to third parties. Your personal wellness journey is stored strictly on your phone, with optional Google Drive backup protected under Google's strict AppData security isolation.</p>
+      <div style="display: flex; gap: 14px; justify-content: center; flex-wrap: wrap;">
+        <a href="privacy.html" class="btn-primary" style="padding: 12px 26px; font-size: 14.5px;">Read Privacy Policy</a>
+        <a href="terms.html" class="btn-secondary" style="padding: 12px 26px; font-size: 14.5px;">View Terms of Service</a>
+      </div>
     </div>
 
     <!-- Footer -->
@@ -646,13 +1340,17 @@
           <span style="font-size: 17px;">Wellora</span>
         </div>
         <div class="footer-links">
+          <a href="#flows">All Flows</a>
+          <a href="#water">Hydration</a>
+          <a href="#cycle">Cycle Tracker</a>
+          <a href="#vitals">Body &amp; BMI</a>
           <a href="privacy.html">Privacy Policy</a>
           <a href="terms.html">Terms of Service</a>
           <a href="mailto:appdev.varun@gmail.com">Developer Support</a>
         </div>
       </div>
       <div class="copyright">
-        <p>&copy; 2026 Wellora. Crafted for a healthier lifestyle. Contact: appdev.varun@gmail.com</p>
+        <p>&copy; 2026 Wellora. Crafted for mindful living and personal health wellness. Developer Contact: appdev.varun@gmail.com</p>
       </div>
     </footer>
   </div>
